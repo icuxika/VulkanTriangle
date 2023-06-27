@@ -1,10 +1,10 @@
 Vulkan 三角形
 ==========
 
-### 安装依赖
+### 安装依赖（`Conan version 2.0.6`）
 
 ```shell
-conan install . -s build_type=Debug --install-folder=cmake-build-debug --build
+conan install . --output-folder=cmake-build-debug --build=missing
 ```
 
 ### shader 编译

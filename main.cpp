@@ -22,13 +22,10 @@ const std::vector<const char *> validationLayers = {
         "VK_LAYER_KHRONOS_validation"
 };
 
-const std::vector<const char *> deviceExtensions = {
+std::vector<const char *> deviceExtensions = {
         VK_KHR_SWAPCHAIN_EXTENSION_NAME
 };
 
-#ifdef __APPLE__
-deviceExtensions.push_back("VK_KHR_portability_subset");
-#endif
 
 #ifdef NDEBUG
 const bool enableValidationLayers = false;
@@ -114,6 +111,9 @@ private:
     size_t currentFrame = 0;
 
     void initWindow() {
+#ifdef __APPLE__
+        deviceExtensions.push_back("VK_KHR_portability_subset");
+#endif
         // 初始化GLFW库
         glfwInit();
         // 防止GLFW创建OpenGL context

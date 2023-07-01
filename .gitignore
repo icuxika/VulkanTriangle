@@ -3,3 +3,4 @@
 /shaders/*.spv
 CMakeUserPresets.json
 .vscode
+/shaders-bin

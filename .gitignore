@@ -2,3 +2,4 @@
 /cmake-build-*
 /shaders/*.spv
 CMakeUserPresets.json
+.vscode

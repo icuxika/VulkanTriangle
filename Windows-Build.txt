@@ -1,3 +1,0 @@
-conan install . -s build_type=Debug --output-folder=cmake-build-debug --build=missing
-cmake --preset conan-default
-cmake --build --preset conan-debug

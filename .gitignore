@@ -4,3 +4,5 @@
 CMakeUserPresets.json
 .vscode
 /shaders-bin
+/out
+VulkanTriangle.*.log

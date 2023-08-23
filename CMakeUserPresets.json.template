@@ -1,0 +1,61 @@
+{
+    "version": 4,
+    "include": [
+        "CMakePresets.json"
+    ],
+    "configurePresets": [
+        {
+            "name": "default-user",
+            "inherits": "default",
+            "cacheVariables": {
+                "CMAKE_TOOLCHAIN_FILE": {
+                    "value": "C:/CommandLineTools/vcpkg/scripts/buildsystems/vcpkg.cmake",
+                    "type": "FILEPATH"
+                }
+            }
+        },
+        {
+            "name": "clang-cl-user",
+            "inherits": "clang-cl",
+            "environment": {
+                "VCPKG_ROOT": "C:/CommandLineTools/vcpkg"
+            }
+        },
+        {
+            "name": "mingw-clang64-user",
+            "inherits": "mingw-clang64",
+            "environment": {
+                "VCPKG_ROOT": "C:/CommandLineTools/vcpkg",
+                "MSYS_PATH": "C:/msys64",
+                "MSYS_SUBSYSTEM": "clang64"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "default-debug-user",
+            "configurePreset": "default-user",
+            "configuration": "Debug"
+        },
+        {
+            "name": "default-release-user",
+            "configurePreset": "default-user",
+            "configuration": "Release"
+        },
+        {
+            "name": "clang-cl-debug-user",
+            "configurePreset": "clang-cl-user",
+            "configuration": "Debug"
+        },
+        {
+            "name": "clang-cl-release-user",
+            "configurePreset": "clang-cl-user",
+            "configuration": "Release"
+        },
+        {
+            "name": "mingw-clang64-debug-user",
+            "configurePreset": "mingw-clang64-user",
+            "configuration": "Debug"
+        }
+    ]
+}

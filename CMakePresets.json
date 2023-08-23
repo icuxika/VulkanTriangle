@@ -1,0 +1,77 @@
+{
+    "version": 4,
+    "configurePresets": [
+        {
+            "name": "default",
+            "binaryDir": "${sourceDir}/out/build/default",
+            "cacheVariables": {
+                "CMAKE_TOOLCHAIN_FILE": {
+                    "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+                    "type": "FILEPATH"
+                },
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/default"
+            }
+        },
+        {
+            "name": "clang-cl",
+            "generator": "Ninja Multi-Config",
+            "binaryDir": "${sourceDir}/out/build/clang-cl",
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+            "cacheVariables": {
+                "CMAKE_TOOLCHAIN_FILE": {
+                    "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+                    "type": "FILEPATH"
+                },
+                "CMAKE_C_COMPILER": "clang-cl",
+                "CMAKE_CXX_COMPILER": "clang-cl",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/clang-cl"
+            }
+        },
+        {
+            "name": "mingw-clang64",
+            "generator": "Ninja Multi-Config",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+            "environment": {
+                "PATH": "$env{MSYS_PATH}/usr/bin;$env{MSYS_PATH}/$env{MSYS_SUBSYSTEM}/bin;$penv{PATH}"
+            },
+            "cacheVariables": {
+                "CMAKE_TOOLCHAIN_FILE": {
+                    "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+                    "type": "FILEPATH"
+                },
+                "CMAKE_C_COMPILER": "$env{MSYS_PATH}/$env{MSYS_SUBSYSTEM}/bin/gcc.exe",
+                "CMAKE_CXX_COMPILER": "$env{MSYS_PATH}/$env{MSYS_SUBSYSTEM}/bin/g++.exe",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/mingw-clang64"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "default-debug",
+            "configurePreset": "default",
+            "configuration": "Debug"
+        },
+        {
+            "name": "default-release",
+            "configurePreset": "default",
+            "configuration": "Release"
+        },
+        {
+            "name": "clang-cl-debug",
+            "configurePreset": "clang-cl",
+            "configuration": "Debug"
+        },
+        {
+            "name": "clang-cl-release",
+            "configurePreset": "clang-cl",
+            "configuration": "Release"
+        }
+    ]
+}

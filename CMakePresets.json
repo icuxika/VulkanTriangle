@@ -23,7 +23,6 @@
         {
             "name": "clang-cl",
             "inherits": "base",
-            "inherits": "base",
             "generator": "Ninja Multi-Config",
             "binaryDir": "${sourceDir}/out/build/clang-cl",
             "architecture": {
